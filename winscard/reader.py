@@ -36,8 +36,8 @@ class Reader:
     def transmit(self, sender, ioSendPci=None, ioRecvPci=None):
         send_buffer = create_bytearray(sender)
         send_size = DWORD(sizeof(send_buffer))
-        recv_buffer = (BYTE * 64)()
-        recv_size = DWORD(64)
+        recv_buffer = (BYTE * 258)()
+        recv_size   = DWORD(258)
         result = ULONG(scard_dll.SCardTransmit(self.card, ioSendPci, send_buffer, send_size, ioRecvPci, recv_buffer,
                                                pointer(recv_size)))
         if not result.value == SCARD_S_SUCCESS:
